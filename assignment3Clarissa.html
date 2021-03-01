@@ -21,6 +21,10 @@
 
 <script>
  var userTable = document.getElementById("userTable");
+
+ sumHasilPosi = 0;
+ sumHasilSemb = 0;
+ sumHasilMeni = 0;
  
  fetch("https://indonesia-covid19.mathdro.id/api/provinsi")
  .then(response=> response.json())
@@ -32,12 +36,20 @@
             row.insertCell(2).innerHTML = resp.data[i].provinsi;
             row.insertCell(3).innerHTML = resp.data[i].kasusPosi;
             row.insertCell(4).innerHTML = resp.data[i].kasusSemb;
-            row.insertCell(3).innerHTML = resp.data[i].kasusMeni;
+            row.insertCell(5).innerHTML = resp.data[i].kasusMeni;
+
+            sumHasilPosi += resp.data[i].kasusPosi;
+            sumHasilSemb += resp.data[i].kasusSemb;
+            sumHasilMeni += resp.data[i].kasusMeni;
         }
+        console.log(sumHasilPosi)
+        console.log(sumHasilSemb)
+        console.log(sumHasilMeni)
     })
     .catch(err =>{
         console.log(err)
  }
+       
     )
 </script>
 
